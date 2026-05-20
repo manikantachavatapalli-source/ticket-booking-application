@@ -94,13 +94,16 @@ const initialTrainData = [
 ]
 const TrainDetails = () => {
     const navigate = useNavigate()
-    // localStorage.setItem('finalTrainData', JSON.stringify(initialTrainData))
+    
     const [searchInput, setSearchInput] = useState('')
     const [trainNote, setTrainNote] = useState('')
     const [storedNotes, setstoredNotes] = useState(JSON.parse(
         localStorage.getItem('finalTrainNotes') || '[]'
     ))
     const [AddingTrainNotes, setAddingTrainNotes] = useState([])
+    if (localStorage.getItem('finalTrainData') === null) {
+        localStorage.setItem('finalTrainData', JSON.stringify(initialTrainData))
+    }
     const trainData = JSON.parse(localStorage.getItem('finalTrainData'))
         useEffect(
             () => {       

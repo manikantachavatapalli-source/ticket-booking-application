@@ -81,7 +81,9 @@ const initialBusData = [
 
 const BusDetails = () => {
     const navigate = useNavigate()
-    // localStorage.setItem('finalBusData', JSON.stringify(initialBusData))
+    if (localStorage.getItem('finalBusData') === null) {
+        localStorage.setItem('finalBusData', JSON.stringify(initialBusData))
+    }
     const [searchInput, setSearchInput] = useState('')
     const [busNote, setBusNote] = useState('')
     const [storedNotes, setstoredNotes] = useState(JSON.parse(
@@ -118,10 +120,7 @@ const BusDetails = () => {
         setAddingBusNotes((prev) => [...prev, newNote])
         setBusNote('')
     }
-    const busData =
-        JSON.parse(
-            localStorage.getItem('finalBusData') || '[]'
-        )
+    const busData = JSON.parse(localStorage.getItem('finalBusData'))
     const searchResults = busData.filter((each) => (each.to.toLowerCase().includes(searchInput.toLowerCase()) || each.from.toLocaleLowerCase().includes(searchInput.toLocaleLowerCase())))
     const NoteItem = (props) => {
         const {data} = props
