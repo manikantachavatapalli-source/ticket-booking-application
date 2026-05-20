@@ -5,11 +5,11 @@ import BookingDetails from '../BookingDetails';
 const Booking = () => {
     const [buttonStatus, setButtonStatus] = useState(true)
     const [need, setNeed] = useState(true)
-    const recievedBusData = JSON.parse(localStorage.getItem('finalBusData'))
+    const recievedBusData = JSON.parse(localStorage.getItem('finalBusData')) || [];
     const busResult = recievedBusData.filter((each) => (
         each.status === true
     ))
-    const recievedTrainData = JSON.parse(localStorage.getItem('finalTrainData'))
+    const recievedTrainData = JSON.parse(localStorage.getItem('finalTrainData')) || [];
     const trainResult = recievedTrainData.filter((each) => (
         each.status === true
     ))
